@@ -1,0 +1,458 @@
+\documentclass[9pt,a4paper]{article}
+
+% CV recherche — version 6.3
+% Compilation : pdfLaTeX
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[default]{sourcesanspro}
+\usepackage{microtype}
+\usepackage[a4paper,left=1.55cm,right=1.55cm,top=1.3cm,bottom=1.3cm]{geometry}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{ragged2e}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{needspace}
+\usepackage{calc}
+
+% --------------------------------------------------
+% COULEURS
+% --------------------------------------------------
+
+\definecolor{ink}{HTML}{202D32}
+\definecolor{accent}{HTML}{176B68}
+\definecolor{muted}{HTML}{536367}
+\definecolor{rule}{HTML}{C7D4D1}
+\definecolor{tagbg}{HTML}{EAF1EF}
+\definecolor{tagtext}{HTML}{155D5A}
+
+\hypersetup{
+    colorlinks=true,
+    urlcolor=accent,
+    linkcolor=accent
+}
+
+% --------------------------------------------------
+% MISE EN PAGE GÉNÉRALE
+% --------------------------------------------------
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\fancyfoot[R]{
+    \scriptsize\color{muted}
+    \quad\thepage
+}
+
+\setlength{\footskip}{18pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{2pt}
+\setlength{\tabcolsep}{0pt}
+\renewcommand{\arraystretch}{1.05}
+
+\setlist[itemize]{
+    leftmargin=1.1em,
+    itemsep=1.8pt,
+    topsep=1.5pt,
+    parsep=0pt,
+    partopsep=0pt
+}
+
+\setlength{\emergencystretch}{2em}
+
+% --------------------------------------------------
+% TITRES DE SECTIONS
+% --------------------------------------------------
+
+\titleformat{\section}
+    {\large\bfseries\color{ink}}
+    {}
+    {0pt}
+    {}
+    [\vspace{-2pt}{\color{accent}\rule{\linewidth}{0.85pt}}]
+
+\titlespacing*{\section}
+    {0pt}
+    {8pt}
+    {6pt}
+
+% --------------------------------------------------
+% ENTRÉES CHRONOLOGIQUES
+% --------------------------------------------------
+
+\newsavebox{\entrycontent}
+\newlength{\datecol}
+\newlength{\entrycol}
+
+\newcommand{\entry}[4]{%
+    \Needspace{5\baselineskip}%
+    \setlength{\datecol}{0.12\linewidth}%
+    \setlength{\entrycol}{
+        \dimexpr
+        \linewidth-\datecol-0.035\linewidth-0.65pt
+        \relax
+    }%
+
+    \sbox{\entrycontent}{%
+        \begin{minipage}[t]{\entrycol}
+            \vspace{0pt}
+            {\normalsize\bfseries\color{ink}#2\par}
+            \vspace{1pt}
+            {\small\color{muted}#3\par}
+            \vspace{3pt}
+            {\normalfont\color{ink}#4}
+        \end{minipage}
+    }%
+
+    \noindent
+    \begin{minipage}[t]{\datecol}
+        \vspace{0pt}
+        {\small\bfseries\color{accent}#1}
+    \end{minipage}
+    \hspace{0.009\linewidth}
+    \raisebox{-\dp\entrycontent}{
+        \color{accent}
+        \rule{0.65pt}{
+            \dimexpr
+            \ht\entrycontent+\dp\entrycontent
+            \relax
+        }
+    }
+    \hspace{0.018\linewidth}
+    \usebox{\entrycontent}
+    \par\vspace{8pt}%
+}
+
+% --------------------------------------------------
+% TAGS DE COMPÉTENCES
+% --------------------------------------------------
+
+\newcommand{\tagitem}[1]{%
+    \colorbox{tagbg}{%
+        \textcolor{tagtext}{%
+            \scriptsize\strut\textsf{#1}%
+        }%
+    }\hspace{3pt}%
+}
+
+\newcommand{\tags}[1]{%
+    \par\vspace{3pt}
+    {\small #1}
+    \par
+}
+
+% --------------------------------------------------
+% BLOCS DE FORMATION
+% --------------------------------------------------
+
+\newcommand{\sectionmeta}[1]{%
+    {\normalsize\bfseries\color{accent}#1\par}
+    \vspace{3pt}
+}
+
+\newcommand{\bodytext}[1]{%
+    {\normalfont\color{ink}#1\par}
+    \vspace{4pt}
+}
+
+% --------------------------------------------------
+% DOCUMENT
+% --------------------------------------------------
+
+\begin{document}
+
+\fontsize{9.0}{10.8}\selectfont
+\color{ink}
+
+% ==================================================
+% HEADER
+% ==================================================
+
+{\fontsize{24}{26}\selectfont
+\bfseries\color{ink}CHLOÉ DUBRAY\par}
+
+\vspace{2pt}
+
+{\large\color{accent}
+Engineering graduate from École Centrale de Lyon
+\textbar\
+MSc in Bioinformatics and Modelling\par}
+
+\vspace{1pt}
+
+{\normalsize\color{muted}
+Research internship — quantitative bioinformatics and modelling\par}
+
+\vspace{6pt}
+
+{\footnotesize
+\href{mailto:ca.dubray@gmail.com}{ca.dubray@gmail.com}
+\quad\textcolor{rule}
+\par}
+
+\vspace{5pt}
+{\color{accent}\rule{\linewidth}{1.7pt}}
+\vspace{7pt}
+
+% ==================================================
+% PROFILE
+% ==================================================
+
+{\normalsize\bfseries\color{accent}Profile}
+\quad
+Engineering graduate of École Centrale de Lyon and currently a second-year Master's student in Bioinformatics and Modelling at Sorbonne University. I have a broad scientific and mathematical background, with a specialisation in computer science and data science, as well as professional experience in software engineering and data processing. I am now moving towards research in bioinformatics, with a particular interest in population genetics comparative and evolutionary genomics, and the modelling of biological systems.
+\par
+
+\vspace{4pt}
+
+{\small\color{muted}
+\textbf{Availability:}
+5–6-month internship starting in mid-February 2027
+\quad\textcolor{rule}{|}
+\quad
+\textbf{Career goal:}
+pursue research, with the possibility of a PhD
+\par}
+
+% ==================================================
+% CURRENT EDUCATION
+% ==================================================
+
+\section{MSc in Bioinformatics and Modelling}
+
+\sectionmeta{
+Sorbonne University, Paris  ·  2026–2027
+}
+
+\bodytext{
+Bilingual, interdisciplinary Master's programme run by the Computer Science and Molecular and Cellular Biology departments from Sorbonne University. Entered directly into the second year. Coursework: genetics and genomics, evolutionary biology, population genetics, statistical analysis of biological data, machine learning, biological networks and systems.
+}
+
+\entry{Sept. 2026–\\
+Present}
+{Population Genetics — Simulation of Evolutionary Dynamics}
+{Sorbonne University · Academic project}
+{%
+Developing population simulations to study the effects of genetic drift, mutation and selection; explore how demographic and evolutionary parameters affect allele frequencies; and compare the results with theoretical models.
+
+\tags{
+\tagitem{Python}
+\tagitem{Stochastic simulation}
+\tagitem{Drift / Selection / Mutation}
+}
+}
+
+\entry{Oct. 2026–\\
+Present}
+{Biological Networks — Inference of Immune Regulatory Networks}
+{Sorbonne University · Academic project}
+{%
+Comparing immune regulatory networks in inflammatory bowel disease. Using transcriptomic data to infer networks and compare signalling pathways involved in inflammation in healthy and inflamed tissues. Data preparation, exploratory analysis, and reconstruction and comparison of gene association networks using statistical and information-theoretic network inference methods.
+
+\tags{
+\tagitem{R}
+\tagitem{Transcriptomic data}
+\tagitem{Graph theory}
+\tagitem{ARACNE / PC / MIIC}
+}
+}
+
+
+
+\entry{Oct. 2026–\\
+Present}
+{MeetU — Predicting the Impact of BRCA1 Variants}
+{Sorbonne University / University of Warsaw · European collaborative project}
+{%
+Collaborative project investigating the impact of BRCA1 variants, in partnership with the University of Warsaw and CeNT (Center of New Technologies). Developing and training a classification model and an automated data pipeline to address a biological research question. 
+\tags{
+\tagitem{Python}
+\tagitem{Machine learning}
+}
+}
+
+
+% ==================================================
+% PROFESSIONAL EXPERIENCE
+% ==================================================
+
+\section{Professional Experience}
+
+\entry{Oct. 2024–\\
+Dec. 2025}
+{Data Engineer / Software Engineer}
+{Advanced Schema, Paris · Permanent position · 14 months}
+{%
+\begin{itemize}
+    \item Data modelling; design, development and maintenance of relational and document databases.
+
+    \item Developing Python scripts to automate and optimise data-processing pipelines.
+
+    \item Designing a distributed platform for large-scale data processing: developing Java / Spring Boot services and APIs for data ingestion and access, and integrating processing workflows and business logic in a containerised cloud environment (Docker, Kubernetes).
+
+    \item Software development, integration and deployment, including automated testing, code reviews, version control and process documentation, with a focus on code quality and maintainability.
+\end{itemize}
+
+\tags{
+\tagitem{Python}
+\tagitem{Java}
+\tagitem{Spring Boot / Reactor}
+\tagitem{SQL}
+\tagitem{Snowflake}
+\tagitem{SQL Server}
+\tagitem{MongoDB}
+\tagitem{Kafka}
+\tagitem{Git}
+\tagitem{Docker / Kubernetes}
+}
+}
+
+\newpage
+
+% ==================================================
+% PREVIOUS EXPERIENCE
+% ==================================================
+
+\entry{Apr. 2024–\\
+Sept. 2024}
+{Software Developer}
+{Devoteam, Vilnius, Lithuania · Final-year internship · 6 months}
+{%
+Developing Python APIs to make data from relational databases accessible, transforming and structuring it to meet business requirements. Exploring time-series forecasting methods using historical data to predict resource consumption.
+
+\tags{
+\tagitem{Python}
+\tagitem{PySpark}
+\tagitem{FastAPI}
+\tagitem{SQLAlchemy}
+\tagitem{SQL}
+\tagitem{Azure Databricks}
+\tagitem{PostgreSQL}
+\tagitem{Git}
+
+}
+}
+
+\entry{May 2022–\\
+June 2023}
+{Data Engineer / Cloud Architect}
+{Cloud Temple, Paris · First-year Master's and gap-year internships · 14 months}
+{%
+Analysing technical requirements and designing information system architectures for tenders. Writing detailed technical documentation on architectures and their components: infrastructure, networks, computing, storage and cybersecurity.
+
+\tags{
+\tagitem{Information systems}
+\tagitem{Technical documentation}
+}
+}
+
+% ==================================================
+% ENGINEERING EDUCATION
+% ==================================================
+
+\section{Education}
+
+\sectionmeta{École Centrale de Lyon  ·  2020–2024}
+
+\bodytext{
+General engineering degree (Master's level), with a specialisation in computer science and data science. Strong academic foundation in applied mathematics, probability, statistics, algorithms and optimisation. Experience in modelling, literature reviews, report writing and the presentation of scientific work.
+}
+
+\entry{Jan. 2024–\\
+Apr. 2024}
+{Optimisation under constraints — Public Transport Networks}
+{École Centrale de Lyon · Final-year project}
+{%
+Formulating an optimisation problem to represent transport networks under graphical constraints and produce readable maps from a geographic network. Modelling the constraints, implementing and evaluating solutions.
+
+\tags{
+\tagitem{Python}
+\tagitem{Geometric constraint optimisation}
+\tagitem{Graph theory}
+
+}
+}
+
+\entry{Jan. 2022–\\
+March 2022}
+{ENS Data Challenge — Prediction of Molecular Properties}
+{École Centrale de Lyon · Academic project}
+{%
+Predicting the properties of chemical compounds from their structure. Data preparation, supervised learning and model evaluation using random forests and neural networks. 
+
+\tags{
+\tagitem{Python}
+\tagitem{scikit-learn}
+\tagitem{Pytorch}
+\tagitem{Supervised learning}
+}
+}
+
+\entry{Sept. 2020–\\
+June 2021}
+{Augmented Reality and Photon Cages}
+{Lyon Nanotechnology Laboratory · Academic project}
+{%
+Working in a team to design an augmented reality application and science communication materials presenting research on photon cages to a scientific audience. Developed for the Lyon Nanotechnology Laboratory.
+
+\tags{
+\tagitem{Laboratory collaboration}
+\tagitem{Science communication}
+\tagitem{Augmented reality}
+}
+}
+
+
+\sectionmeta{Preparatory Classes in Mathematics and Physics · Lycée Stanislas, Paris · 2018–2020}
+
+\bodytext{
+Intensive training in mathematics, physics and theoretical computer science in preparation for the competitive entrance examinations to French engineering schools.
+
+}
+
+
+
+
+% ==================================================
+% SKILLS
+% ==================================================
+
+\section{Skills}
+
+{\small
+
+\begin{tabularx}{\linewidth}{
+    @{}
+    >{\bfseries\color{accent}}p{0.13\linewidth}
+    @{\hspace{0.015\linewidth}}
+    >{\color{ink}}X
+    @{}
+}
+
+Programming &
+Python · R · SQL · Java · Git \\[3pt]
+
+Modelling &
+Probability · Statistics · Stochastic simulation · Optimisation · Machine learning \\[3pt]
+
+Bioinformatics &
+Genomic and transcriptomic data · Population genetics · Biological networks · Graph theory \\[3pt]
+
+Languages &
+French (native) · Finnish (native) · English (fluent, TOEFL 653/677, 2022) · German (school level) \\[3pt]
+
+\end{tabularx}
+}
+
+
+
+
+
+\end{document}

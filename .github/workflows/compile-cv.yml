@@ -1,0 +1,40 @@
+name: Compile LaTeX CVs
+
+on:
+  push:
+    branches: [ main, master ] # Se déclenche à chaque push sur la branche principale
+    paths:
+      - '*.tex' # Se déclenche uniquement si un fichier .tex est modifié
+
+permissions:
+  contents: write # Nécessaire pour autoriser l'action à committer les PDF générés
+
+jobs:
+  build_pdf:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Compilation du CV en Anglais
+      - name: Compile CV English
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: cv_en.tex
+          compiler: latexmk
+          args: -pdf -interaction=nonstopmode
+
+      # Compilation du CV en Français
+      - name: Compile CV French
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: cv_fr.tex
+          compiler: latexmk
+          args: -pdf -interaction=nonstopmode
+
+      # Commit automatique des PDF générés dans le dépôt
+      - name: Commit compiled PDFs
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Auto-compile CV PDFs via GitHub Actions"
+          file_pattern: "*.pdf"

@@ -1,0 +1,479 @@
+\documentclass[9pt,a4paper]{article}
+
+% CV recherche — version 6.3
+% Compilation : pdfLaTeX
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[default]{sourcesanspro}
+\usepackage{microtype}
+\usepackage[a4paper,left=1.55cm,right=1.55cm,top=1.3cm,bottom=1.3cm]{geometry}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{ragged2e}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{needspace}
+\usepackage{calc}
+
+% --------------------------------------------------
+% COULEURS
+% --------------------------------------------------
+
+\definecolor{ink}{HTML}{202D32}
+\definecolor{accent}{HTML}{176B68}
+\definecolor{muted}{HTML}{536367}
+\definecolor{rule}{HTML}{C7D4D1}
+\definecolor{tagbg}{HTML}{EAF1EF}
+\definecolor{tagtext}{HTML}{155D5A}
+
+\hypersetup{
+    colorlinks=true,
+    urlcolor=accent,
+    linkcolor=accent
+}
+
+% --------------------------------------------------
+% MISE EN PAGE GÉNÉRALE
+% --------------------------------------------------
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\fancyfoot[R]{
+    \scriptsize\color{muted}
+    \quad\thepage
+}
+
+\setlength{\footskip}{18pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{2pt}
+\setlength{\tabcolsep}{0pt}
+\renewcommand{\arraystretch}{1.05}
+
+\setlist[itemize]{
+    leftmargin=1.1em,
+    itemsep=1.8pt,
+    topsep=1.5pt,
+    parsep=0pt,
+    partopsep=0pt
+}
+
+\setlength{\emergencystretch}{2em}
+
+% --------------------------------------------------
+% TITRES DE SECTIONS
+% --------------------------------------------------
+
+\titleformat{\section}
+    {\large\bfseries\color{ink}}
+    {}
+    {0pt}
+    {}
+    [\vspace{-2pt}{\color{accent}\rule{\linewidth}{0.85pt}}]
+
+\titlespacing*{\section}
+    {0pt}
+    {8pt}
+    {6pt}
+
+% --------------------------------------------------
+% ENTRÉES CHRONOLOGIQUES
+% --------------------------------------------------
+
+\newsavebox{\entrycontent}
+\newlength{\datecol}
+\newlength{\entrycol}
+
+\newcommand{\entry}[4]{%
+    \Needspace{5\baselineskip}%
+    \setlength{\datecol}{0.12\linewidth}%
+    \setlength{\entrycol}{
+        \dimexpr
+        \linewidth-\datecol-0.035\linewidth-0.65pt
+        \relax
+    }%
+
+    \sbox{\entrycontent}{%
+        \begin{minipage}[t]{\entrycol}
+            \vspace{0pt}
+            {\normalsize\bfseries\color{ink}#2\par}
+            \vspace{1pt}
+            {\small\color{muted}#3\par}
+            \vspace{3pt}
+            {\normalfont\color{ink}#4}
+        \end{minipage}
+    }%
+
+    \noindent
+    \begin{minipage}[t]{\datecol}
+        \vspace{0pt}
+        {\small\bfseries\color{accent}#1}
+    \end{minipage}
+    \hspace{0.009\linewidth}
+    \raisebox{-\dp\entrycontent}{
+        \color{accent}
+        \rule{0.65pt}{
+            \dimexpr
+            \ht\entrycontent+\dp\entrycontent
+            \relax
+        }
+    }
+    \hspace{0.018\linewidth}
+    \usebox{\entrycontent}
+    \par\vspace{8pt}%
+}
+
+% --------------------------------------------------
+% TAGS DE COMPÉTENCES
+% --------------------------------------------------
+
+\newcommand{\tagitem}[1]{%
+    \colorbox{tagbg}{%
+        \textcolor{tagtext}{%
+            \scriptsize\strut\textsf{#1}%
+        }%
+    }\hspace{3pt}%
+}
+
+\newcommand{\tags}[1]{%
+    \par\vspace{3pt}
+    {\small #1}
+    \par
+}
+
+% --------------------------------------------------
+% BLOCS DE FORMATION
+% --------------------------------------------------
+
+\newcommand{\sectionmeta}[1]{%
+    {\normalsize\bfseries\color{accent}#1\par}
+    \vspace{3pt}
+}
+
+\newcommand{\bodytext}[1]{%
+    {\normalfont\color{ink}#1\par}
+    \vspace{4pt}
+}
+
+% --------------------------------------------------
+% DOCUMENT
+% --------------------------------------------------
+
+\begin{document}
+
+\fontsize{9.0}{10.8}\selectfont
+\color{ink}
+
+% ==================================================
+% EN-TÊTE
+% ==================================================
+\noindent
+
+
+{\fontsize{24}{26}\selectfont
+\bfseries\color{ink}CHLOÉ DUBRAY\par}
+
+\vspace{2pt}
+
+{\large\color{accent}
+Ingénieure centralienne diplômée
+\textbar\
+M2 Bioinformatique et modélisation\par}
+
+\vspace{1pt}
+
+{\normalsize\color{muted}
+Stage de recherche — bioinformatique quantitative et modélisation\par}
+
+\vspace{6pt}
+
+{\footnotesize
+\href{mailto:ca.dubray@gmail.com}{ca.dubray@gmail.com}
+\quad\textcolor{rule}
+\par}
+
+\vspace{5pt}
+{\color{accent}\rule{\linewidth}{1.7pt}}
+\vspace{7pt}
+
+% ==================================================
+% PROFIL
+% ==================================================
+
+{\normalsize\bfseries\color{accent}Profil}
+\quad
+Ingénieure diplômée de l’École Centrale de Lyon,
+actuellement en M2 Bioinformatique et modélisation
+à Sorbonne Université. Je combine une formation scientifique et mathématique généraliste, une spécialisation en informatique et science des données, ainsi qu'une expérience professionnelle en ingénierie logicielle et traitement de données. Je m'oriente aujourd'hui vers la recherche en bioinformatique, avec un intérêt particulier pour la génétique des populations, la génomique comparative et évolutive et la modélisation de systèmes biologiques.
+\par
+
+\vspace{4pt}
+
+{\small\color{muted}
+\textbf{Disponibilité :}
+stage de 5-6 mois, début mi-février 2027
+\quad\textcolor{rule}{|}
+\quad
+\textbf{Projet :}
+poursuite en recherche, avec une perspective de doctorat
+\par}
+
+% ==================================================
+% FORMATION ACTUELLE
+% ==================================================
+
+\section{M2 Bioinformatique et modélisation}
+
+\sectionmeta{
+Sorbonne Université, Paris  ·  2026–2027
+}
+
+\bodytext{
+Master bilingue et pluridisciplinaire entre les départements d'informatique et de biologie moléculaire et cellulaire, intégré directement en M2. Enseignements suivis : génétique et génomique,
+biologie évolutive, génétique des populations,
+analyse statistique de données biologiques,
+apprentissage automatique, réseaux et systèmes biologiques.
+}
+
+\entry{Sept. 2026–\\
+Aujourd'hui}
+{Génétique des populations — Simulation de dynamiques évolutives}
+{Sorbonne Université · Projet académique}
+{%
+Développement de simulations de populations pour
+étudier les effets de la dérive génétique,
+des mutations et de la sélection, explorer
+l’influence des paramètres démographiques et
+évolutifs sur les fréquences alléliques, et comparer les résultats obtenus avec les modèles théoriques.
+
+\tags{
+\tagitem{Python}
+\tagitem{Simulation stochastique}
+\tagitem{Dérive / Sélection / Mutation}
+}
+}
+
+\entry{Oct. 2026–\\
+Aujourd'hui}
+{Réseaux biologiques — Inférence de réseaux de régulation immunitaire}
+{Sorbonne Université · Projet académique}
+{%
+Comparaison des réseaux de régulation immunitaire au cours des maladies inflammatoires chroniques de l'intestin. Exploitation de données transcriptomiques pour l'inférence de réseaux comparant les voies de signalisation jouant un rôle dans l'inflammation dans le cas de tissus sains et enflammés. Préparation des données,
+analyse exploratoire, reconstruction et comparaison de réseaux de relations entre gènes à l'aide de méthodes statistiques et informationnelles d’inférence de réseaux.
+
+\tags{
+\tagitem{R}
+\tagitem{Données transcriptomiques}
+\tagitem{Théorie des graphes}
+\tagitem{ARACNE / PC / MIIC}
+}
+}
+
+
+
+\entry{Oct. 2026–\\
+Aujourd'hui}
+{MeetU — Prédiction de l’impact de variants de BRCA1}
+{Sorbonne Université/University of Warsaw · Projet collaboratif européen}
+{%
+Projet collaboratif visant à étudier l’impact de variants de BRCA1, en collaboration avec l’Université de Varsovie et le CeNT (Center of New Technologies). Développement et entraînement d'un modèle de classification et d'une pipeline de données automatisée pour répondre à une problématique biologique. 
+\tags{
+\tagitem{Python}
+\tagitem{Apprentissage automatique}
+}
+}
+
+
+% ==================================================
+% EXPÉRIENCE PROFESSIONNELLE
+% ==================================================
+
+\section{Expérience professionnelle}
+
+\entry{Oct. 2024–\\
+Dec. 2025}
+{Data Engineer / Software Engineer}
+{Advanced Schema, Paris · CDI · 14 mois}
+{%
+\begin{itemize}
+    \item Modélisation de données ; conception, alimentation et exploitation de bases de données relationnelles et documentaires.
+
+    \item Développement de scripts Python pour l'automatisation et l'optimisation de pipelines de traitement de données.
+
+    \item Conception d'une plateforme distribuée de traitement de données massives : développement de services Java / Spring Boot et d'API de réception et d'exposition de données, intégration de traitements et de logiques métier ; environnement cloud conteneurisé (Docker, Kubernetes).
+
+    \item Développement, intégration et déploiement, avec mise en œuvre de tests automatisés, revues de code, gestion de versions et documentation des traitements, dans une démarche de qualité et de maintenabilité du code.
+\end{itemize}
+
+\tags{
+\tagitem{Python}
+\tagitem{Java}
+\tagitem{Spring Boot / Reactor}
+\tagitem{SQL}
+\tagitem{Snowflake}
+\tagitem{SQL Server}
+\tagitem{MongoDB}
+\tagitem{Kafka}
+\tagitem{Git}
+\tagitem{Docker / Kubernetes}
+}
+}
+
+\newpage
+
+% ==================================================
+% EXPÉRIENCES PRÉCÉDENTES
+% ==================================================
+
+\entry{Avr. 2024–\\
+Sept. 2024}
+{Développeuse}
+{Devoteam, Vilnius, Lituanie · Stage de fin d'études · 6 mois}
+{%
+Développement d'API Python pour l'exposition de données issues de bases relationnelles, avec transformation et structuration selon les besoins métier ; exploration de méthodes de prévision de séries temporelles à partir de données historiques, pour étudier la prédiction de la consommation de ressources.
+
+\tags{
+\tagitem{Python}
+\tagitem{PySpark}
+\tagitem{FastAPI}
+\tagitem{SQLAlchemy}
+\tagitem{SQL}
+\tagitem{Azure Databricks}
+\tagitem{PostgreSQL}
+\tagitem{Git}
+
+}
+}
+
+\entry{Mai 2022–\\
+Juin 2023}
+{Data Engineer / Architecte Cloud}
+{Cloud Temple, Paris · Stages de M1 et de césure · 14 mois}
+{%
+Analyse de besoins techniques et conception d'architectures de systèmes d'information pour répondre à des appels d'offres. Rédaction de documentation technique détaillée sur les architectures et leurs composantes : infrastructure, réseaux, calcul, stockage et cybersécurité.
+
+\tags{
+\tagitem{Systèmes d'information}
+\tagitem{Documentation technique}
+}
+}
+
+% ==================================================
+% FORMATION D'INGÉNIEUR
+% ==================================================
+
+\section{Formation}
+
+\sectionmeta{École Centrale de Lyon  ·  2020–2024}
+
+\bodytext{
+Diplôme d’ingénieur généraliste (grade de master),
+avec option informatique et science
+des données. Socle scientifique approfondi en mathématiques
+appliquées, probabilités, statistiques, algorithmique
+et optimisation. Pratique de la modélisation, de la recherche bibliographique, de la rédaction de rapports et de la présentation de travaux scientifiques.
+}
+
+\entry{Jan. 2024–\\
+Avr. 2024}
+{Optimisation sous contrainte — Tracé de réseaux de transports en commun}
+{École Centrale de Lyon · Projet de fin d’études}
+{%
+Formalisation d’un problème d’optimisation de
+représentation de réseaux de transport sous contraintes
+graphiques, afin de produire des cartes lisibles à
+partir d’un réseau géographique. Modélisation des
+contraintes, implémentation et évaluation des solutions.
+
+\tags{
+\tagitem{Python}
+\tagitem{Optimisation sous contraintes géométriques}
+\tagitem{Théorie des graphes}
+
+}
+}
+
+\entry{Jan. 2022–\\
+Mars 2022}
+{Challenge Data ENS — Prédiction de propriétés moléculaires}
+{École Centrale de Lyon · Projet académique}
+{%
+Prédiction de propriétés de composés chimiques
+à partir de leur structure. Préparation des données,
+apprentissage supervisé et évaluation de modèles : random forest, réseaux de neurones. 
+
+\tags{
+\tagitem{Python}
+\tagitem{scikit-learn}
+\tagitem{PyTorch}
+\tagitem{Apprentissage supervisé}
+}
+}
+
+\entry{Sept. 2020–\\
+Juin 2021}
+{Réalité augmentée et cages à photons}
+{Laboratoire des nanotechnologies de Lyon · Projet d'études}
+{%
+Conception en équipe d’une application de réalité
+augmentée et de supports de médiation scientifique
+pour présenter des travaux sur les cages à photons
+à un public scientifique. Réalisation pour le laboratoire des nanotechnologies de Lyon.
+
+\tags{
+\tagitem{Projet avec laboratoire}
+\tagitem{Vulgarisation scientifique}
+\tagitem{Réalité augmentée}
+}
+}
+
+
+\sectionmeta{Classes préparatoires MP/MPSI · Lycée Stanislas de Paris · 2018–2020}
+
+\bodytext{
+Formation intensive en mathématiques, physique et informatique théorique dans le cadre de la préparation aux concours des grandes écoles d’ingénieurs.
+
+}
+
+
+
+
+% ==================================================
+% COMPÉTENCES
+% ==================================================
+
+\section{Compétences}
+
+{\small
+
+\begin{tabularx}{\linewidth}{
+    @{}
+    >{\bfseries\color{accent}}p{0.13\linewidth}
+    @{\hspace{0.015\linewidth}}
+    >{\color{ink}}X
+    @{}
+}
+
+Programmation &
+Python · R · SQL · Java · Git \\[3pt]
+
+Modélisation &
+Probabilités · Statistiques · Simulation stochastique · Optimisation · Apprentissage automatique \\[3pt]
+
+Bioinformatique &
+Données génomiques et transcriptomiques · Génétique des populations · Réseaux biologiques · Théorie des graphes \\[3pt]
+
+Langues &
+Français (natif) · Finnois (langue maternelle) · Anglais (courant, TOEFL 653/677, 2022) · Allemand (scolaire) \\[3pt]
+
+\end{tabularx}
+}
+
+\end{document}
